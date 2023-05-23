@@ -109,12 +109,12 @@ in the libraries/RungeKuttaSchemes directory
 ### Using RKSymLESFoam
 
 * RKSymLESFoam can request schemes from system/fvSchemes, depending on the
-* choses LES model (grad(U) under gradSchemes and wallDist were defined 
+chosen LES model (grad(U) under gradSchemes and wallDist were defined 
 for the test case)
 * A transport model has to be chosen in the constant/transportProperties
 file, similar to the usage of pimpleFoam
-* A turbulence model has to be chosen in the
-constant/turbulenceProperties file, similar to the usage of pimpleFoam
+* A turbulence model has to be chosen in the constant/turbulenceProperties
+file, similar to the usage of pimpleFoam
 
 ## Contact & support
 
