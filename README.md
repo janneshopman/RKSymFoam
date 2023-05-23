@@ -62,11 +62,15 @@ and Runge-Kutta 3)
 * Run cases on 8 processors from their directories by first adjusting
 run.sh to:
 
-<pre> #- Run serial
+<pre> 
+#- Run serial
 # runApplication $(getApplication)
 
-#- Run parallel runApplication decomposePar runParallel $(getApplication)
-runApplication reconstructPar </pre>
+#- Run parallel 
+runApplication decomposePar 
+runParallel $(getApplication)
+runApplication reconstructPar 
+</pre>
 
 ### Post-processing
 
@@ -80,14 +84,24 @@ using
 * The entries in system/fvSchemes are not read by RKSymFoam, therefore all
 schemes can be set to:
 
-<pre> default         none; </pre>
+<pre> 
+    default         none;
+</pre>
 
 * A subdictionary named RungeKutta has to be added to system/fvSolution,
 for example:
 
-<pre> RungeKutta { scheme          BackwardEuler; nOuter          1;
-nInner          2; pnPredCoef      1; pRefCell        0; pRefValue
-0; } </pre>
+<pre> 
+RungeKutta 
+{ 
+scheme          BackwardEuler; 
+nOuter          1;
+nInner          2; 
+pnPredCoef      1; 
+pRefCell        0; 
+pRefValue       0; 
+} 
+</pre>
 
 * All available schemes are based on the Butcher Tableau and can be found
 in the libraries/RungeKuttaSchemes directory
