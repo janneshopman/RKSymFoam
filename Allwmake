@@ -1,0 +1,8 @@
+#!/bin/bash
+
+wmake libso libraries/RungeKuttaSchemes
+
+wmake applications/solvers/RKSymFoam
+wwmake applications/solvers/RKSymLESFoam
+
+

@@ -1,0 +1,6 @@
+#!/bin/bash
+
+wclean libraries/RungeKuttaSchemes
+
+wclean applications/solvers/RKSymFoam
+wclean applications/solvers/RKSymLESFoam
