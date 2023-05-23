@@ -67,10 +67,10 @@ and Runge-Kutta 3)
 run.sh to:
 
 <pre>
-\#- Run serial
-\# runApplication $(getApplication)
+#- Run serial
+# runApplication $(getApplication)
 
-\#- Run parallel
+#- Run parallel
 runApplication decomposePar
 runParallel $(getApplication)
 runApplication reconstructPar
