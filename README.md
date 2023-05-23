@@ -22,14 +22,14 @@ found in the LICENSE file.
 
 ## Prerequisites
 
-* OpenFOAM v2012. While it may compile against other
-  versions, this is not tested and currently not supported.
+* OpenFOAM v2012. While it may compile against other versions, this is not
+tested and currently not supported.
 * Python with numpy and matplotlib
 
 ## Usage
 
-* Make sure that OpenFOAM v2012 is loaded into your environment Compile
-* all libraries and apps with
+* Make sure that OpenFOAM v2012 is loaded into your environment 
+* Compile all libraries and apps with
 
 <pre> ./Allwmake </pre>
 
@@ -42,8 +42,8 @@ Taylor-Green Vortex and a channel flow
 
 * Demonstrating the loss of kinetic energy due to numerical dissipation
 over time
-* Comparison between icoFoam and RKSymFoam using Backward Euler scheme Run
-* cases from their directories using
+* Comparison between icoFoam and RKSymFoam using Backward Euler scheme 
+* Run cases from their directories using
 
 <pre> ./run.sh </pre>
 
@@ -51,8 +51,7 @@ over time
 
 * Demonstrating accuracy of the solver to simulate turbulence
 * Demonstrating the ability to include LES models DNS cases: icoFoam
-* (Backward Euler) and RKSymFoam (Backward Euler and
-Runge-Kutta 3)
+(Backward Euler) and RKSymFoam (Backward Euler and Runge-Kutta 3)
 * LES cases: pimpleFoam (Backward Euler) and RKSymLESFoam (Backward Euler
 and Runge-Kutta 3)
 * Run cases on a single processor from their directories using
@@ -110,8 +109,8 @@ in the libraries/RungeKuttaSchemes directory
 ### Using RKSymLESFoam
 
 * RKSymLESFoam can request schemes from system/fvSchemes, depending on the
-* choses LES model (grad(U) under gradSchemes
-and wallDist were defined for the test case)
+* choses LES model (grad(U) under gradSchemes and wallDist were defined 
+for the test case)
 * A transport model has to be chosen in the constant/transportProperties
 file, similar to the usage of pimpleFoam
 * A turbulence model has to be chosen in the
