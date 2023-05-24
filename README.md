@@ -46,23 +46,24 @@ Taylor-Green Vortex and a channel flow
 * Demonstrating the loss of kinetic energy due to numerical dissipation
 over time
 * Comparison between icoFoam and RKSymFoam using Backward Euler scheme 
-* Run cases from their directories using
+* Run cases from the TGV directory using
 
-<pre> ./run.sh </pre>
+<pre> ./launchCases.sh </pre>
 
 ### Channel flow
 
 * Demonstrating accuracy of the solver to simulate turbulence
-* Demonstrating the ability to include LES models DNS cases: icoFoam
-(Backward Euler) and RKSymFoam (Backward Euler and Runge-Kutta 3)
-* LES cases: pimpleFoam (Backward Euler) and RKSymLESFoam (Backward Euler
-and Runge-Kutta 3)
+* Demonstrating the ability to include LES models 
+* DNS cases: icoFoam (Backward Euler) and RKSymFoam (Backward Euler and 
+Runge-Kutta 3)
+* LES cases: pimpleFoam (Backward Euler) and RKSymFoam (Backward Euler and
+Runge-Kutta 3)
 * Run cases on a single processor from their directories using
 
-<pre> ./run.sh </pre>
+<pre> ./launchCases.sh </pre>
 
-* Run cases on 8 processors from their directories by first adjusting
-run.sh to:
+* Run cases on 8 processors with the same command by first adjusting
+the following lines in templateCase/run.sh to:
 
 <pre> 
 #- Run serial
@@ -83,12 +84,15 @@ using
 
 ## Using RKSymFoam in your own OpenFOAM cases
 
-* The entries in system/fvSchemes are not read by RKSymFoam, therefore all
-schemes can be set to:
+* The entries in system/fvSchemes are not read by RKSymFoam, except 
+potentially for the turbulence model, all other schemes can be set to:
 
 <pre> 
     default         none;
 </pre>
+
+* In system/fvSolution, the subdictionaries for p and pFinal are named
+pCorr and pCorrFinal respectively.
 
 * A subdictionary named RungeKutta has to be added to system/fvSolution,
 for example:
@@ -102,22 +106,40 @@ nInner          2;
 pnPredCoef      1; 
 pRefCell        0; 
 pRefValue       0; 
+LES             false;
 } 
 </pre>
 
 * All available schemes are based on the Butcher Tableau and can be found
 in the libraries/RungeKuttaSchemes directory
-* Cases are run exactly the same as by any other OpenFOAM solver
-
-### Using RKSymLESFoam
-
-* RKSymLESFoam can request schemes from system/fvSchemes, depending on the
-chosen LES model (grad(U) under gradSchemes and wallDist were defined 
-for the test case)
-* A transport model has to be chosen in the constant/transportProperties
-file, similar to the usage of pimpleFoam
+* Cases are run exactly the same way as by any other OpenFOAM solver
+* A transport model has to be chosen in the constant/tansportProperties 
+file, similar to the usage of pimplFoam. This will be used if the LES 
+variable above is set to true.
 * A turbulence model has to be chosen in the constant/turbulenceProperties
-file, similar to the usage of pimpleFoam
+file, similar to the usage of pimpleFoam. This will be used if the LES
+variable above is set to true.
+* If running DNS, set LES to false, as shown above. In this case the
+chosen modal will not be used, but need to be present as dummy variables.
+* Example transport model, in constant/transportProperties add the line:
+
+<pre>
+transportModel  Newtonian;
+</pre>
+
+* Example turbulence model, create the file constant/turbulenceProperties:
+<pre>
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      turbulenceProperties;
+}
+
+simulationType laminar;
+</pre>
 
 ## Contact & support
 
