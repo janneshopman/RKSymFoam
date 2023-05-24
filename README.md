@@ -120,7 +120,7 @@ variable above is set to true.
 file, similar to the usage of pimpleFoam. This will be used if the LES
 variable above is set to true.
 * If running DNS, set LES to false, as shown above. In this case the
-chosen model will not be used, but need to be present as dummy variables.
+chosen model will not be used, but needs to be present as dummy variable.
 * Example transport model, in constant/transportProperties add the line:
 
 <pre>
