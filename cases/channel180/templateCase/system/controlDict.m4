@@ -52,7 +52,6 @@ functions
     fieldAverage1
     {
         type            fieldAverage;
-        libs            (fieldFunctionObjects);
         writeControl    writeTime;
         timeStart       15;
 
