@@ -21,12 +21,22 @@ else
 {
     UEqnSourceA =
     (
-        #include "UEqnSourceA.H"
+      - fv::gaussConvectionScheme<vector>
+        (
+            mesh,
+            phi,
+            midPoint<vector>(mesh)
+        ).fvmDiv(phi, U)
     );
 
     UEqnSourceB =
     (
-        #include "UEqnSourceB.H"
+        fv::gaussLaplacianScheme<vector, scalar>
+        (
+            mesh,
+            midPoint<scalar>(mesh),
+            fv::uncorrectedSnGrad<vector>(mesh)
+        ).fvmLaplacian(nuf, U)
     );
 
     tUEqn =

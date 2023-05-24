@@ -1,3 +1,0 @@
-setTaylorGreenFields.C
-
-EXE = $(FOAM_USER_APPBIN)/setTaylorGreenFields

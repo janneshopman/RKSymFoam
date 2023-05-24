@@ -6,7 +6,12 @@ if (!scheme.lastStage())
     {
         UEqnSourceA =
         (
-            #include "UEqnSourceA.H"
+          - fv::gaussConvectionScheme<vector>
+            (
+                mesh,
+                phi,
+                midPoint<vector>(mesh)
+            ).fvmDiv(phi, U)
         );
 
         UEqnSourceAH = UEqnSourceA.H();
@@ -16,7 +21,12 @@ if (!scheme.lastStage())
     {
         UEqnSourceB =
         (
-            #include "UEqnSourceB.H"
+            fv::gaussLaplacianScheme<vector, scalar>
+            (
+                mesh,
+                midPoint<scalar>(mesh),
+                fv::uncorrectedSnGrad<vector>(mesh)
+            ).fvmLaplacian(nuf, U)
         );
 
         UEqnSourceBH = UEqnSourceB.H();

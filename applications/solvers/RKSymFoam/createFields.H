@@ -119,3 +119,52 @@ label pRefCell = 0;
 scalar pRefValue = 0.0;
 
 setRefCell(p, scheme.dict(), pRefCell, pRefValue);
+
+const bool LES(readBool(scheme.dict().lookup("LES")));
+
+if (!LES)
+{
+    Info<<endl;
+    Info<<"--------------------------------------------------------------------------------"<<endl;
+    Info<<"|Running DNS, initialising a dummy turbulence model                            |"<<endl;
+    Info<<"|OpenFoam will read from constant/transportProperties                          |"<<endl;
+    Info<<"|and constant/turbulenceProperties                                             |"<<endl;
+    Info<<"|                                                                              |"<<endl;
+    Info<<"|Example steps to set the dummies:                                             |"<<endl;
+    Info<<"|                                                                              |"<<endl;
+    Info<<"|1. In constant/transportProperties, add a line:                               |"<<endl;
+    Info<<"|transportModel  Newtonian;                                                    |"<<endl;
+    Info<<"|                                                                              |"<<endl;
+    Info<<"|2. Create a file constant/turbulenceProperties, with:                         |"<<endl;
+    Info<<"|<begin of file>                                                               |"<<endl;
+    Info<<"|FoamFile                                                                      |"<<endl;
+    Info<<"|{                                                                             |"<<endl;
+    Info<<"|    version     2.0;                                                          |"<<endl;
+    Info<<"|    format      ascii;                                                        |"<<endl;
+    Info<<"|    class       dictionary;                                                   |"<<endl;
+    Info<<"|    location    \"constant\";                                                   |"<<endl;
+    Info<<"|    object      turbulenceProperties;                                         |"<<endl;
+    Info<<"|}                                                                             |"<<endl;
+    Info<<"|                                                                              |"<<endl;
+    Info<<"|simulationType laminar;                                                       |"<<endl;
+    Info<<"|<end of file>                                                                 |"<<endl;
+    Info<<"|                                                                              |"<<endl;
+    Info<<"--------------------------------------------------------------------------------"<<endl;
+    Info<<endl;
+}
+
+singlePhaseTransportModel laminarTransport(U, phi);
+
+autoPtr<incompressible::turbulenceModel> turbulence
+(
+    incompressible::turbulenceModel::New(U, phi, laminarTransport)
+);
+
+if (!LES)
+{
+    Info<<endl;
+    Info<<"--------------------------------------------------------------------------------"<<endl;
+    Info<<"|End of initialising dummy turbulence model                                    |"<<endl;
+    Info<<"--------------------------------------------------------------------------------"<<endl;
+    Info<<endl;
+}

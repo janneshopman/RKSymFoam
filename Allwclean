@@ -2,5 +2,6 @@
 
 wclean libraries/RungeKuttaSchemes
 
+wclean applications/utilities/setTaylorGreenFields
+
 wclean applications/solvers/RKSymFoam
-wclean applications/solvers/RKSymLESFoam

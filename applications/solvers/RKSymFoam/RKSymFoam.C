@@ -1,4 +1,6 @@
 #include "fvCFD.H"
+#include "singlePhaseTransportModel.H"
+#include "turbulentTransportModel.H"
 #include "RungeKuttaScheme.H"
 #include "fvOptions.H"
 
@@ -20,6 +22,11 @@ int main(int argc, char *argv[])
     #include "createFields.H"
     #include "createFvOptions.H"
 
+    if (LES)
+    {
+        turbulence->validate();
+    }
+
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
     Info<< "\nStarting time loop\n" << endl;
@@ -33,6 +40,11 @@ int main(int argc, char *argv[])
         runTime++;
 
         Info << "Time = " << runTime.timeName() << endl;
+
+        if (LES)
+        {
+            nuf =  midPoint<scalar>(mesh).interpolate(turbulence->nuEff());
+        }
 
         pn = p.oldTime();
 
@@ -54,6 +66,11 @@ int main(int argc, char *argv[])
             }
 
             #include "store.H"
+        }
+
+        if (LES)
+        {    
+            turbulence->correct();
         }
 
         runTime.write();

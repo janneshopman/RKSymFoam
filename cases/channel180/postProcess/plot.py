@@ -1,7 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-solvers = ['icoFoam', 'RKSymFoam_BE', 'RKSymFoam_RK3', 'pimpleFoam', 'RKSymLESFoam_BE', 'RKSymLESFoam_RK3']
+runDir = '../runs'
+
+solvers = \
+[ \
+    'icoFoam', 'RKSymFoam_DNS_BackwardEuler', 'RKSymFoam_DNS_Kutta', \
+    'pimpleFoam', 'RKSymFoam_LES_BackwardEuler', 'RKSymFoam_LES_Kutta' \
+]
 lineStyles = ['-', '-', '-', '--', '--', '--']
 
 timeDir = '60'
@@ -15,7 +21,7 @@ refData = np.loadtxt('refData/Chan180_S2a_basic_few.txt', skiprows = 36, usecols
 # Make plots
 for iSolver, solver in enumerate(solvers):
 
-    fileNameBase = '../' + solver + '/graphs/' + timeDir + '/'
+    fileNameBase = runDir + '/' + solver + '/graphs/' + timeDir + '/'
 
     # Import run data
     UMeanData = np.loadtxt(fileNameBase + 'Uf.xy')

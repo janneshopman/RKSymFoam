@@ -4,16 +4,19 @@ This code contains slightly adjusted versions of the solvers used in the
 paper "A symmetry-preserving second-order time-accurate PISO-based
 method." by E.M.J. Komen, J.A. Hopman, E.M.A. Frederix, F.X. Trias and
 R.W.C.P.  Verstappen. One notable adjustment is made in the pressure
-gradient interpolation to follow the paper "On the interpolation problem
-for the Poisson equation on collocated meshes." by D. Santos Serrano, D.
-Muela N.  Valle Marchante and F.X. Trias Miquel. For a description of the
-method, please refer to these papers.
+gradient interpolation to follow the paper "An energy-preserving 
+unconditionally stable fractional step method on collocated grids." by D.
+Santos Serrano, F.X. Trias Miquel, G. Colomer Rey and C.D. Pérez Segarra.
+For a description of the method, please refer to these papers.
 
 ## Authors
 
 The main structure of the solver, including the Runge-Kutta schemes was
-developped by Edo Frederix. The symmetry-preserving method was applied to
-this structure by Jannes Hopman. 
+developped by Edo Frederix, of the Nuclear Research and Consultancy Group 
+(NRG), Westerduinweg 3, 1755 LE Petten, The Netherlands. The symmetry-
+preserving method was applied to this structure by Jannes Hopman, of the 
+Heat and Mass Transfer Technological Center, Technical University of 
+Catalonia, C/Colom 11, 08222 Terrassa, Spain. 
 
 ## License
 

@@ -1,6 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+runDir = '../runs'
+
 cases = ['RKSymFoam', 'icoFoam']
 
 nu = 0
@@ -9,7 +11,7 @@ nu = 0
 for case in cases:
 
     # Retrieve kinetic energy of initial field
-    EKinFile = open('../' + case + '/log.setTaylorGreenFields', 'r')
+    EKinFile = open(runDir + '/' + case + '/log.setTaylorGreenFields', 'r')
 
     for line in EKinFile:
 
@@ -20,7 +22,7 @@ for case in cases:
             EKinInit = float(words[-1])/2    
 
     # Import run data
-    EKinData = np.loadtxt('../' + case + '/postProcessing/kineticEnergy/0/volFieldValue.dat', skiprows = 4)/2
+    EKinData = np.loadtxt(runDir + '/' + case + '/postProcessing/kineticEnergy/0/volFieldValue.dat', skiprows = 4)/2
 
     EKinData = np.vstack(([0, EKinInit], EKinData))
 
