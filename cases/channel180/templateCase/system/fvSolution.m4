@@ -17,8 +17,8 @@ FoamFile
 
 solvers
 {
-    //p{Final} and U{Final} read by OpenFOAM solvers
-    //pCorr{Final} read by RKSymFoam
+    // p{Final} and U{Final} read by OpenFOAM solvers
+    // pCorr{Final} read by RKSymFoam
 
     "(p|pCorr)"
     {
@@ -52,7 +52,7 @@ solvers
     }
 }
 
-//Read by icoFoam
+// Read by icoFoam
 PISO
 {
     nCorrectors     2;
@@ -61,7 +61,7 @@ PISO
     pRefValue       0;
 }
 
-//Read by pimpleFoam
+// Read by pimpleFoam
 PIMPLE
 {
     nOuterCorrectors 1;
@@ -71,7 +71,7 @@ PIMPLE
     pRefValue       0;
 }
 
-//Read by RKSymFoam
+// Read by RKSymFoam
 RungeKutta
 {
     scheme          VARSCHEME;

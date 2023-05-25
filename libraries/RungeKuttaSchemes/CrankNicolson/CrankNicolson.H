@@ -1,3 +1,9 @@
+/* Reference
+Crank, J., & Nicolson, P. (1947, January). A practical method for numerical
+evaluation of solutions of partial differential equations of the heat-conduction
+type. In Mathematical proceedings of the Cambridge philosophical society (Vol.
+43, No. 1, pp. 50-67). Cambridge University Press. */
+
 #ifndef CrankNicolson_H
 #define CrankNicolson_H
 

@@ -15,9 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-//N.B. RKSymFoam solvers do not read any schemes from this dictionary, except 
-//when a turbulence model is used. In that case it reads grad(U) from gradSchemes
-//and method from wallDist
+// N.B. RKSymFoam solvers do not read any schemes from this dictionary, except 
+// when a turbulence model is used. In that case it reads grad(U) from 
+// gradSchemes and method from wallDist
 ddtSchemes
 {
     default         Euler;

@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-//Set as dummy turbulenceModel if DNS is used
+// Set as dummy turbulenceModel if DNS is used
 simulationType LES;
 
 LES

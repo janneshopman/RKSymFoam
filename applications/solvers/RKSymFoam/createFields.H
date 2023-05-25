@@ -48,6 +48,7 @@ volScalarField p
     mesh
 );
 
+// Poisson solver solves only for the pressure correction
 volScalarField pCorr
 (
     IOobject
@@ -63,6 +64,7 @@ volScalarField pCorr
     p.boundaryField().types()
 );
 
+// Extra pressure field to store pressure at the previous time step
 volScalarField pn
 (
     IOobject
@@ -113,44 +115,53 @@ autoPtr<RungeKuttaScheme> schemePtr
 
 RungeKuttaScheme& scheme = schemePtr();
 
+// Read the coefficient to determine the weight of the previous time step
+// in setting the pressure predictor
+// pnPredCoef = 0 equals Chorin method
+// pnPredCoef = 1 equals Van Kan method
 const scalar pnPredCoef(readScalar(scheme.dict().lookup("pnPredCoef")));
+
+Info<< "Running with predictor pressure = " << pnPredCoef << " * previous time step pressure" << endl;
 
 label pRefCell = 0;
 scalar pRefValue = 0.0;
 
 setRefCell(p, scheme.dict(), pRefCell, pRefValue);
 
+// Set LES bool that determines if simulation is run with or without LES
+// In either case, a turbulence model has to be constructed
+// Explanation to set dummy scheme in case of DNS below
 const bool LES(readBool(scheme.dict().lookup("LES")));
 
 if (!LES)
 {
-    Info<<endl;
-    Info<<"--------------------------------------------------------------------------------"<<endl;
-    Info<<"|Running DNS, initialising a dummy turbulence model                            |"<<endl;
-    Info<<"|OpenFoam will read from constant/transportProperties                          |"<<endl;
-    Info<<"|and constant/turbulenceProperties                                             |"<<endl;
-    Info<<"|                                                                              |"<<endl;
-    Info<<"|Example steps to set the dummies:                                             |"<<endl;
-    Info<<"|                                                                              |"<<endl;
-    Info<<"|1. In constant/transportProperties, add a line:                               |"<<endl;
-    Info<<"|transportModel  Newtonian;                                                    |"<<endl;
-    Info<<"|                                                                              |"<<endl;
-    Info<<"|2. Create a file constant/turbulenceProperties, with:                         |"<<endl;
-    Info<<"|<begin of file>                                                               |"<<endl;
-    Info<<"|FoamFile                                                                      |"<<endl;
-    Info<<"|{                                                                             |"<<endl;
-    Info<<"|    version     2.0;                                                          |"<<endl;
-    Info<<"|    format      ascii;                                                        |"<<endl;
-    Info<<"|    class       dictionary;                                                   |"<<endl;
-    Info<<"|    location    \"constant\";                                                   |"<<endl;
-    Info<<"|    object      turbulenceProperties;                                         |"<<endl;
-    Info<<"|}                                                                             |"<<endl;
-    Info<<"|                                                                              |"<<endl;
-    Info<<"|simulationType laminar;                                                       |"<<endl;
-    Info<<"|<end of file>                                                                 |"<<endl;
-    Info<<"|                                                                              |"<<endl;
-    Info<<"--------------------------------------------------------------------------------"<<endl;
-    Info<<endl;
+    Info<< endl;
+    Info<< "--------------------------------------------------------------------------------" << endl;
+    Info<< "|Running DNS, initialising a dummy turbulence model                            |" << endl;
+    Info<< "|OpenFoam will read from constant/transportProperties                          |" << endl;
+    Info<< "|and constant/turbulenceProperties                                             |" << endl;
+    Info<< "|                                                                              |" << endl;
+    Info<< "|Example steps to set the dummies:                                             |" << endl;
+    Info<< "|                                                                              |" << endl;
+    Info<< "|1. In constant/transportProperties, add a line:                               |" << endl;
+    Info<< "|transportModel  Newtonian;                                                    |" << endl;
+    Info<< "|                                                                              |" << endl;
+    Info<< "|2. Create a file constant/turbulenceProperties, with:                         |" << endl;
+    Info<< "|<begin of file>                                                               |" << endl;
+    Info<< "|FoamFile                                                                      |" << endl;
+    Info<< "|{                                                                             |" << endl;
+    Info<< "|    version     2.0;                                                          |" << endl;
+    Info<< "|    format      ascii;                                                        |" << endl;
+    Info<< "|    class       dictionary;                                                   |" << endl;
+    Info<< "|    location    \"constant\";                                                   |" << endl;
+    Info<< "|    object      turbulenceProperties;                                         |" << endl;
+    Info<< "|}                                                                             |" << endl;
+    Info<< "|                                                                              |" << endl;
+    Info<< "|simulationType laminar;                                                       |" << endl;
+    Info<< "|<end of file>                                                                 |" << endl;
+    Info<< "|                                                                              |" << endl;
+    Info<< "--------------------------------------------------------------------------------" << endl;
+    Info<< endl;
 }
 
 singlePhaseTransportModel laminarTransport(U, phi);
@@ -162,9 +173,9 @@ autoPtr<incompressible::turbulenceModel> turbulence
 
 if (!LES)
 {
-    Info<<endl;
-    Info<<"--------------------------------------------------------------------------------"<<endl;
-    Info<<"|End of initialising dummy turbulence model                                    |"<<endl;
-    Info<<"--------------------------------------------------------------------------------"<<endl;
-    Info<<endl;
+    Info<< endl;
+    Info<< "--------------------------------------------------------------------------------" << endl;
+    Info<< "|End of initialising dummy turbulence model                                    |" << endl;
+    Info<< "--------------------------------------------------------------------------------" << endl;
+    Info<< endl;
 }

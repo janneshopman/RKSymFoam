@@ -1,3 +1,7 @@
+/* Reference
+Alexander, R. (1977). Diagonally implicit Runge–Kutta methods for stiff ODE’s.
+SIAM Journal on Numerical Analysis, 14(6), 1006-1021. */
+
 #ifndef Alexander3_H
 #define Alexander3_H
 

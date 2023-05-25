@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
             mesh
         );
 
+        // Setting all p and U according to analytical sine functions
         forAll(p, cellI)
         {
             const scalar x = mesh.C().field()[cellI][0];
@@ -61,6 +62,7 @@ int main(int argc, char *argv[])
             p.field()[cellI] = 0.25*(Foam::cos(2.0*x) + Foam::cos(2.0*y));
         }
 
+        // Calculating initial kinetic energy, useful in determining numerical dissipation
         volScalarField magSqrUInit = U&U;
         double volAverageMagSqrUInit = magSqrUInit.weightedAverage(mesh.V()).value();
 

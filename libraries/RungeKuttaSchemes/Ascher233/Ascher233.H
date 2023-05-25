@@ -1,3 +1,8 @@
+/* Reference
+Ascher, U. M., Ruuth, S. J., & Spiteri, R. J. (1997).  Implicit-explicit
+Runge-Kutta methods for time-dependent partial differential equations. Applied
+Numerical Mathematics, 25(2-3), 151-167. */ 
+
 #ifndef Ascher233_H
 #define Ascher233_H
 

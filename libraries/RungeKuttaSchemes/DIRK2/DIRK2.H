@@ -1,3 +1,7 @@
+/* Reference
+E.  Hairer and G. Wanner, Solving Ordinary Differential Equations II: Stiff and
+Differential-Algebraic Problems (Springer, New York, 1991). */
+
 #ifndef DIRK2_H
 #define DIRK2_H
 

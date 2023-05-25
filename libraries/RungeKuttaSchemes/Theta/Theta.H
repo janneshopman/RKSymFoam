@@ -1,3 +1,10 @@
+/* Reference
+Variation on the Crank-Nicolson scheme:
+Crank, J., & Nicolson, P. (1947, January). A practical method for numerical
+evaluation of solutions of partial differential equations of the heat-conduction
+type. In Mathematical proceedings of the Cambridge philosophical society (Vol.
+43, No. 1, pp. 50-67). Cambridge University Press. */
+
 #ifndef Theta_H
 #define Theta_H
 

@@ -1,3 +1,4 @@
+// Set up source term for Poisson equation
 volScalarField rAU(scheme.C()/UEqn.A());
 
 surfaceScalarField rAUf
@@ -14,6 +15,7 @@ HbyA = UEqn.H()/UEqn.A();
 UEqnSourceAH = UEqnSourceA.H();
 UEqnSourceBH = UEqnSourceB.H();
 
+// Volumetric interpolation used, see references at top of RKSymFoam.C
 surfaceScalarField phiHbyA
 (
     "phiHbyA",
@@ -24,6 +26,7 @@ surfaceScalarField phiHbyA
 
 constrainPressure(pCorr, U, phiHbyA, rAU);
 
+// Set up Poisson equation for pCorr and solve
 fvScalarMatrix pCorrEqn
 (
     fv::gaussLaplacianScheme<scalar, scalar>
@@ -36,7 +39,8 @@ fvScalarMatrix pCorrEqn
     fvc::div(phiHbyA)
 );
 
-pCorrEqn.setReference(pRefCell, pRefValue-pn[pRefCell]);
+// Slightly adjusted p reference value to account for the fact that pCorr is solved
+pCorrEqn.setReference(pRefCell, pRefValue - pnPredCoef*pn[pRefCell]);
 
 const word solver
 (
@@ -49,20 +53,15 @@ const solverPerformance& perf = pCorrEqn.solve(mesh.solver(solver));
 
 scheme.residual() = perf.initialResidual();
 
-p = pnPredCoef*pn + pCorr;
+// Correct fields with updated pCorr
+phi = phiHbyA - mesh.magSf()*rAUf*fv::uncorrectedSnGrad<scalar>(mesh).snGrad(pCorr);
 
-const volVectorField gradpCorr
-(
-    fv::gaussGrad<scalar>::gradf(linear<scalar>(mesh).interpolate(pCorr), "gradpCorr")
-);
+#include "continuityErrs.H"
 
-U = HbyA - rAU*gradpCorr;
-
+// Volumetric interpolation used, see references at top of RKSymFoam.C
+U = HbyA - rAU*fv::gaussGrad<scalar>::gradf(linear<scalar>(mesh).interpolate(pCorr), "gradpCorr");
 U.correctBoundaryConditions();
 
 fvOptions.correct(U);
 
-if (scheme.lastInner() || scheme.innerConverged())
-{
-    phi = phiHbyA - mesh.magSf()*rAUf*fv::uncorrectedSnGrad<scalar>(mesh).snGrad(pCorr);
-}
+p = pnPredCoef*pn + pCorr;

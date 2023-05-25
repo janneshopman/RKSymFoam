@@ -1,3 +1,7 @@
+/* Reference
+Kutta, W. (1901). Beitrag zur näherungsweisen Integration totaler
+Differentialgleichungen. Teubner. */
+
 #ifndef Kutta_H
 #define Kutta_H
 

@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-transportModel  Newtonian;      //Set as a dummy transportModel
+transportModel  Newtonian;      // Set as a dummy transportModel
 
 nu              0.0;
 

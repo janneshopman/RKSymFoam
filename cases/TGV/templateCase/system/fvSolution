@@ -17,8 +17,8 @@ FoamFile
 
 solvers
 {
-    //p{Final} and U read by icoFOAM
-    //pCorr{Final} read by RKSymFoam
+    // p{Final} and U read by icoFOAM
+    // pCorr{Final} read by RKSymFoam
 
     "(p|pCorr)"
     {
@@ -43,7 +43,7 @@ solvers
     }
 }
 
-//Read by icoFoam
+// Read by icoFoam
 PISO
 {
     nCorrectors     2;
@@ -52,7 +52,7 @@ PISO
     pRefValue       0;
 }
 
-//Read by RKSymFoam
+// Read by RKSymFoam
 RungeKutta
 {
     scheme          BackwardEuler;
@@ -60,7 +60,8 @@ RungeKutta
     nInner          2;
     pnPredCoef      1;
     pRefPoint       (3.141528 3.141528 0);
-    pRefValue       0;
+    pRefValue       0.5;
+    LES             false;
 }
 
 

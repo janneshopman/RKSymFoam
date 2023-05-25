@@ -1,11 +1,20 @@
 tmp<fvVectorMatrix> tUEqn;
 
+// Volumetric interpolation used, see references at top of RKSymFoam.C
 const volVectorField gradpn
 (
     fv::gaussGrad<scalar>::gradf(linear<scalar>(mesh).interpolate(pn), "gradpn")
 );
 
-
+// Set up a UEqn matrix, containing:
+// D: time derivative of U
+// K: weighted sum of previous stage (explicit) convection and diffusion terms
+// pnPredCoef weighted gradient of previous time step pressure 
+// pnPredCoef = 0 equals Chorin method
+// pnPredCoef = 1 equals Van Kan method
+// possible fvOptions source term
+// and finally, in case of implicit scheme:
+// implicit convection and diffusion terms
 if (scheme.explicitStage())
 {
     tUEqn =
