@@ -87,7 +87,7 @@ Runge-Kutta 3)
 * Run cases on 8 processors with the same command by first adjusting the
 following lines in run.sh to:
 
-<pre> 
+<pre>
 #- Run serial
 #runApplication $(getApplication)
 
@@ -139,7 +139,7 @@ in "cases/\<case\>/postProcessing/validationResults"
 * The entries in system/fvSchemes are not read by RKSymFoam, except
 potentially for the turbulence model, all other schemes can be set to:
 
-<pre> 
+<pre>
     default         none;
 </pre>
 
@@ -148,7 +148,7 @@ pCorr and pCorrFinal respectively.
 * A subdictionary named RungeKutta has to be added to system/fvSolution,
 for example:
 
-<pre> 
+<pre>
 RungeKutta
 {
 scheme          BackwardEuler;
