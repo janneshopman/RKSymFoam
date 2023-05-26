@@ -49,19 +49,18 @@ PISO
     nCorrectors     2;
     nNonOrthogonalCorrectors 0;
     pRefPoint       (3.141528 3.141528 0);
-    pRefValue       0;
+    pRefValue       0.5;
 }
 
 // Read by RKSymFoam
 RungeKutta
 {
-    scheme          BackwardEuler;
+    scheme          VARRKSCHEME;
     nOuter          1;
     nInner          2;
     pnPredCoef      1;
     pRefPoint       (3.141528 3.141528 0);
     pRefValue       0.5;
-    LES             false;
 }
 
 

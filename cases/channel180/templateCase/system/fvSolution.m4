@@ -74,13 +74,12 @@ PIMPLE
 // Read by RKSymFoam
 RungeKutta
 {
-    scheme          VARSCHEME;
+    scheme          VARRKSCHEME;
     nOuter          1;
     nInner          2;
     pnPredCoef      1;
     pRefCell        0;
     pRefValue       0;
-    LES             VARLESBOOL;
 }
 
 

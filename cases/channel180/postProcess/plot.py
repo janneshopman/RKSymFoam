@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-runDir = 'refRuns'
+runDir = '../validation'
 
 solvers = \
 [ \
@@ -52,4 +52,4 @@ for iSolver, solver in enumerate(solvers):
             plt.ylabel(dataSet)
             plt.title(r'Channel flow at $Re_{\tau}=$' + str(ReTau))
             plt.legend()
-            plt.savefig('results/ref_' + dataSet + '.png')
+            plt.savefig('results/' + dataSet + '.png')

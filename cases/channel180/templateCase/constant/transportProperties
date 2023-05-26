@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-transportModel  Newtonian;      // Set as a dummy transportModel if DNS is used
+transportModel  Newtonian;
 
 nu              0.005555556;
 

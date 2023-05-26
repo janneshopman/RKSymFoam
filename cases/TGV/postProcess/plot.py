@@ -1,9 +1,9 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-runDir = '../runs'
+runDir = '../validation'
 
-cases = ['RKSymFoam', 'icoFoam']
+cases = ['icoFoam', 'RKSymFoam']
 
 nu = 0
 

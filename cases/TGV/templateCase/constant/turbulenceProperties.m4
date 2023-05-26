@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-simulationType laminar;     // Set as dummy turbulenceModel
+simulationType VARSIMTYPE;
 
 
 // ************************************************************************* //
