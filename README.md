@@ -46,22 +46,22 @@ Taylor-Green Vortex and a channel flow.
 copied before it run from inside the new directory with:
 
 <pre>
-./run.sh <solver> <simulation type> <Runge-Kutta scheme>
+./run.sh \<solver\> \<simulation type\> \<Runge-Kutta scheme\>
 </pre> 
 
-* Solvers permitted by this script: <icoFoam>, <pimpleFoam> and
-<RKSymFoam>
-* Simulation types permitted by this script: <LES>, <laminar> (laminar
+* Solvers permitted by this script: \<icoFoam\>, \<pimpleFoam\> and
+\<RKSymFoam\>
+* Simulation types permitted by this script: \<LES\>, \<laminar\> (laminar
 should be selected to run DNS)
-* Runge-Kutta schemes permitted by this script: <BackwardEuler>, <Kutta>
-(classical Runge-Kutta 3 scheme)
-* icoFoam does not read the <simulation type> and <Runge-Kutta scheme>
+* Runge-Kutta schemes permitted by this script: \<BackwardEuler\>, 
+\<Kutta\> (classical Runge-Kutta 3 scheme)
+* icoFoam does not read the \<simulation type\> and \<Runge-Kutta scheme\>
 arguments, so they can be omitted
-* pimpleFoam does not read the <Runge-Kutta scheme> argument, so it can be
-omitted
+* pimpleFoam does not read the \<Runge-Kutta scheme\> argument, so it can
+be omitted
 * The user is encouraged to experiment with different settings after
 getting familiar with the structure of the code, to do so change the
-<VAR*> variables inside "system/controldict.m4",
+\<VAR*\> variables inside "system/controldict.m4",
 "constant/turbulenceProperties.m4" and "system/fvSolution.m4" and rename
 the files to omit the ".m4" extension.
 * The available Runge-Kutta schemes can be found in
@@ -105,14 +105,14 @@ directory using
 python plot.py
 </pre>
 
-* For example: To postprocess <run_directory>/<case_1_name> and 
-<run_directory>/<case_2_name>, edit the <runDir> and <solvers> variables in
-* "plot.py" to:
+* For example: To postprocess \<run_directory\>/\<case_1_name\> and 
+\<run_directory\>/\<case_2_name\>, edit the \<runDir\> and \<solvers\> 
+variables in "plot.py" to:
 
 <pre>
-runDir = <run directory>
+runDir = \<run directory\>
 
-solvers = ['<case 1 name>', '<case 2 name>']
+solvers = ['\<case 1 name\>', '\<case 2 name\>']
 </pre>
 
 * Resulting plots will be found in "postProcess/results"
@@ -143,7 +143,6 @@ potentially for the turbulence model, all other schemes can be set to:
 
 * In system/fvSolution, the subdictionaries for p and pFinal are named
 pCorr and pCorrFinal respectively.
-
 * A subdictionary named RungeKutta has to be added to system/fvSolution,
 for example:
 
@@ -168,13 +167,13 @@ file, similar to the usage of pimplFoam.
 file, similar to the usage of pimpleFoam.
 * If you want to run a DNS, set the transport model to Newtonian (1) and
 the simulation type to laminar (2), as demonstrated below.
-* 1. In constant/transportProperties add the line:
+* 1\. In constant/transportProperties add the line:
 
 <pre>
 transportModel  Newtonian;
 </pre>
 
-* 2. Create the file constant/turbulenceProperties:
+* 2\. Create the file constant/turbulenceProperties:
 <pre>
 FoamFile
 {
