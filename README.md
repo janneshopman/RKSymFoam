@@ -89,7 +89,7 @@ following lines in run.sh to:
 
 <pre> 
 #- Run serial
-# runApplication $(getApplication)
+#runApplication $(getApplication)
 
 #- Run parallel 
 runApplication decomposePar
