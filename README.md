@@ -26,7 +26,7 @@ found in the LICENSE file.
 ## Prerequisites
 
 * OpenFOAM v2012. While it may compile against other versions, this is not
-* tested and currently not supported.
+tested and currently not supported.
 * Python with numpy and matplotlib
 
 ## Usage
@@ -49,12 +49,12 @@ copied before it run from inside the new directory with:
 ./run.sh &ltsolver&gt &ltsimulation type&gt &ltRunge-Kutta scheme&gt
 </pre> 
 
-* Solvers permitted by this script: \<icoFoam\>, \<pimpleFoam\> and
-\<RKSymFoam\>
-* Simulation types permitted by this script: \<LES\>, \<laminar\> (laminar
+* Solvers permitted by this script: "icoFoam", "pimpleFoam" and
+"RKSymFoam"
+* Simulation types permitted by this script: "LES", "laminar" (laminar
 should be selected to run DNS)
-* Runge-Kutta schemes permitted by this script: \<BackwardEuler\>, 
-\<Kutta\> (classical Runge-Kutta 3 scheme)
+* Runge-Kutta schemes permitted by this script: "BackwardEuler", "Kutta"
+(classical Runge-Kutta 3 scheme)
 * icoFoam does not read the \<simulation type\> and \<Runge-Kutta scheme\>
 arguments, so they can be omitted
 * pimpleFoam does not read the \<Runge-Kutta scheme\> argument, so it can
@@ -98,8 +98,8 @@ runApplication reconstructPar
 
 ### Post-processing
 
-* To post-process the cases, run "plot.py" from the "cases/postProcess"
-directory using
+* To post-process the cases, run "plot.py" from the 
+"cases/\<case\>/postProcess" directory using
 
 <pre>
 python plot.py
@@ -115,7 +115,7 @@ runDir = &ltrun_directory&gt
 solvers = ['&ltcase_1_name&gt', '&ltcase_2_name&gt']
 </pre>
 
-* Resulting plots will be found in "postProcess/results"
+* Resulting plots will be found in the "postProcess/results" directory
 
 ### Validation 
 
@@ -127,10 +127,10 @@ solvers = ['&ltcase_1_name&gt', '&ltcase_2_name&gt']
 ./launchCases.sh
 </pre>
 
-* After completing the cases, run "plot.py" inside "cases/postProcessing",
-there is no need to alter "plot.py"
+* After completing the cases, run "plot.py" inside 
+"cases/\<case\>postProcessing", there is no need to alter "plot.py"
 * The resulting plots can be compared with the results readily available
-in "cases/postProcessing/validationResults"
+in "cases/\<case\>/postProcessing/validationResults"
 
 ## Using RKSymFoam in your own OpenFOAM cases
 
@@ -159,15 +159,15 @@ pRefValue       0;
 </pre>
 
 * All available schemes are based on the Butcher Tableau and can be found
-in the libraries/RungeKuttaSchemes directory
+in the "libraries/RungeKuttaSchemes" directory
 * Cases are run exactly the same way as by any other OpenFOAM solver
-* A transport model has to be chosen in the constant/tansportProperties
-file, similar to the usage of pimplFoam.
-* A turbulence model has to be chosen in the constant/turbulenceProperties
+* A transport model has to be chosen in "constant/tansportProperties",
+similar to the usage of pimplFoam.
+* A turbulence model has to be chosen in "constant/turbulenceProperties"
 file, similar to the usage of pimpleFoam.
 * If you want to run a DNS, set the transport model to Newtonian (1) and
 the simulation type to laminar (2), as demonstrated below.
-* 1\. In constant/transportProperties add the line:
+* 1\. In "constant/transportProperties" add the line:
 
 <pre>
 transportModel  Newtonian;
