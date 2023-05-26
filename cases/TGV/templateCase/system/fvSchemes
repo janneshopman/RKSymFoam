@@ -15,7 +15,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// N.B. RKSymFoam does not read any schemes from this dictionary
+// N.B. RKSymFoam solvers do not read any schemes from this dictionary, except
+// potentially when a turbulence model is used
+
 ddtSchemes
 {
     default         Euler;

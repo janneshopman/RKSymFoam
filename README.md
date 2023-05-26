@@ -92,9 +92,9 @@ following lines in run.sh to:
 # runApplication $(getApplication)
 
 #- Run parallel 
-runApplication decomposePar 
+runApplication decomposePar
 runParallel $(getApplication)
-runApplication reconstructPar 
+runApplication reconstructPar
 </pre>
 
 ### Post-processing
@@ -111,7 +111,7 @@ python plot.py
 variables in "plot.py" to:
 
 <pre>
-runDir = &ltrun_directory&gt
+runDir = '&ltrun_directory&gt'
 
 solvers = ['&ltcase_1_name&gt', '&ltcase_2_name&gt']
 </pre>
@@ -129,7 +129,8 @@ solvers = ['&ltcase_1_name&gt', '&ltcase_2_name&gt']
 </pre>
 
 * After completing the cases, run "plot.py" inside 
-"cases/\<case\>postProcessing", there is no need to alter "plot.py"
+"cases/\<case\>postProcessing", the version of "plot.py" in this
+repository is set up to post-process the validation cases
 * The resulting plots can be compared with the results readily available
 in "cases/\<case\>/postProcessing/validationResults"
 
@@ -148,15 +149,15 @@ pCorr and pCorrFinal respectively.
 for example:
 
 <pre> 
-RungeKutta 
-{ 
-scheme          BackwardEuler; 
+RungeKutta
+{
+scheme          BackwardEuler;
 nOuter          1;
-nInner          2; 
-pnPredCoef      1; 
-pRefCell        0; 
-pRefValue       0; 
-} 
+nInner          2;
+pnPredCoef      1;
+pRefCell        0;
+pRefValue       0;
+}
 </pre>
 
 * All available schemes are based on the Butcher Tableau and can be found
