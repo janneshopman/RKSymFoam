@@ -63,7 +63,8 @@ be omitted
 getting familiar with the structure of the code, to do so change the
 \<VAR*\> variables inside "system/controldict.m4",
 "constant/turbulenceProperties.m4" and "system/fvSolution.m4" and rename
-the files to omit the ".m4" extension.
+the files to omit the ".m4" extension. The case can now be run without the
+"run.sh" script, but simply as any other OpenFoam case.
 * The available Runge-Kutta schemes can be found in
 "libraries/RungeKuttaSchemes/", the Butcher Tableaus are given in the
 <.C> file and a reference is given in the <.H> file
