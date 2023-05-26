@@ -46,7 +46,7 @@ Taylor-Green Vortex and a channel flow.
 copied before it run from inside the new directory with:
 
 <pre>
-./run.sh &ltsolver &ltsimulation type&gt &ltRunge-Kutta scheme&gt
+./run.sh &ltsolver&gt &ltsimulation type&gt &ltRunge-Kutta scheme&gt
 </pre> 
 
 * Solvers permitted by this script: \<icoFoam\>, \<pimpleFoam\> and
@@ -110,9 +110,9 @@ python plot.py
 variables in "plot.py" to:
 
 <pre>
-runDir = &ltrun directory&gt
+runDir = &ltrun_directory&gt
 
-solvers = ['&ltcase 1 name&gt', '&ltcase 2 name&gt']
+solvers = ['&ltcase_1_name&gt', '&ltcase_2_name&gt']
 </pre>
 
 * Resulting plots will be found in "postProcess/results"
