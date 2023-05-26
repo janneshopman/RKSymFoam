@@ -52,7 +52,7 @@ functions
     kineticEnergy
     {
         type            volFieldValue;
-
+        libs            ("fieldFunctionObjects.so");
         operation       volAverage;
         regionType      all;
     
