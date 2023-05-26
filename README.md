@@ -46,7 +46,7 @@ Taylor-Green Vortex and a channel flow.
 copied before it run from inside the new directory with:
 
 <pre>
-./run.sh \<solver\> \<simulation type\> \<Runge-Kutta scheme\>
+./run.sh &ltsolver &ltsimulation type&gt &ltRunge-Kutta scheme&gt
 </pre> 
 
 * Solvers permitted by this script: \<icoFoam\>, \<pimpleFoam\> and
@@ -66,7 +66,7 @@ getting familiar with the structure of the code, to do so change the
 the files to omit the ".m4" extension.
 * The available Runge-Kutta schemes can be found in
 "libraries/RungeKuttaSchemes/", the Butcher Tableaus are given in the
-<*.C> file and a reference is given in the <*.H> file
+<.C> file and a reference is given in the <.H> file
 
 ### Taylor-Green Vortex
 
@@ -110,9 +110,9 @@ python plot.py
 variables in "plot.py" to:
 
 <pre>
-runDir = \<run directory\>
+runDir = &ltrun directory&gt
 
-solvers = ['\<case 1 name\>', '\<case 2 name\>']
+solvers = ['&ltcase 1 name&gt', '&ltcase 2 name&gt']
 </pre>
 
 * Resulting plots will be found in "postProcess/results"
