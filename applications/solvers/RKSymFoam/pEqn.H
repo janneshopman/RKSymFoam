@@ -1,6 +1,7 @@
 // Set up source term for Poisson equation
 volScalarField rAU(scheme.C()/UEqn.A());
 
+// Volumetric interpolation used, see references at top of RKSymFoam.C
 surfaceScalarField rAUf
 (
     "rAUf",
