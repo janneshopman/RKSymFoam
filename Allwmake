@@ -1,4 +1,5 @@
 #!/bin/bash
+. "${WM_PROJECT_DIR:?}"/wmake/scripts/AllwmakeParseArguments
 
 wmake libso libraries/RungeKuttaSchemes
 
