@@ -164,7 +164,7 @@ pRefValue       0;
 in the "libraries/RungeKuttaSchemes" directory
 * Cases are run exactly the same way as by any other OpenFOAM solver
 * A transport model has to be chosen in "constant/tansportProperties",
-similar to the usage of pimplFoam.
+similar to the usage of pimpleFoam.
 * A turbulence model has to be chosen in "constant/turbulenceProperties"
 file, similar to the usage of pimpleFoam.
 * If you want to run a DNS, set the transport model to Newtonian (1) and
