@@ -129,7 +129,7 @@ solvers = ['&ltcase_1_name&gt', '&ltcase_2_name&gt']
 </pre>
 
 * After completing the cases, run "plot.py" inside 
-"cases/\<case\>postProcessing", the version of "plot.py" in this
+"cases/\<case\>/postProcessing", the version of "plot.py" in this
 repository is set up to post-process the validation cases
 * The resulting plots can be compared with the results readily available
 in "cases/\<case\>/postProcessing/validationResults"
