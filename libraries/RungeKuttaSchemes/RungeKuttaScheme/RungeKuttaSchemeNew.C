@@ -17,7 +17,7 @@ Foam::autoPtr<Foam::RungeKuttaScheme> Foam::RungeKuttaScheme::New
 
     Info<< "Selecting Runge-Kutta scheme " << schemeName << endl;
 
-    dictionaryConstructorTable::iterator cstrIter =
+    auto cstrIter =
         dictionaryConstructorTablePtr_->find(schemeName);
 
     if (cstrIter == dictionaryConstructorTablePtr_->end())
