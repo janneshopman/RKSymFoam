@@ -136,16 +136,16 @@ in "cases/\<case\>/postProcessing/validationResults"
 
 ## Using RKSymFoam in your own OpenFOAM cases
 
-* The entries in system/fvSchemes are not read by RKSymFoam, except
+* The entries in "system/fvSchemes" are not read by RKSymFoam, except
 potentially for the turbulence model, all other schemes can be set to:
 
 <pre>
     default         none;
 </pre>
 
-* In system/fvSolution, the subdictionaries for p and pFinal are named
+* In "system/fvSolution", the subdictionaries for p and pFinal are named
 pCorr and pCorrFinal respectively.
-* A subdictionary named RungeKutta has to be added to system/fvSolution,
+* A subdictionary named "RungeKutta" has to be added to "system/fvSolution",
 for example:
 
 <pre>
@@ -175,7 +175,7 @@ the simulation type to laminar (2), as demonstrated below.
 transportModel  Newtonian;
 </pre>
 
-* 2\. Create the file constant/turbulenceProperties:
+* 2\. Create the file "constant/turbulenceProperties":
 <pre>
 FoamFile
 {
