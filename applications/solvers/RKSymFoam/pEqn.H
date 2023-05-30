@@ -41,7 +41,10 @@ fvScalarMatrix pCorrEqn
 );
 
 // Slightly adjusted p reference value to account for the fact that pCorr is solved
-pCorrEqn.setReference(pRefCell, pRefValue - pnPredCoef*pn[pRefCell]);
+// pRefCell = -1 if pRefCell is not on processor domain partition, avoid evaluating pn[-1]
+// setReference function only sets pRefValue if pRefCell >= 0
+double pCorrRefValue = (pRefCell >= 0) ? pRefValue - pnPredCoef*pn[pRefCell] : 0.0;
+pCorrEqn.setReference(pRefCell, pCorrRefValue);
 
 const word solver
 (
