@@ -59,6 +59,8 @@ find $CASEPATH -name '*.m4' | while read IN; do
     m4 -P $VARS $IN > $OUT
 done
 
+cp -r 0.orig 0
+
 runApplication blockMesh
 
 #- Run serial
