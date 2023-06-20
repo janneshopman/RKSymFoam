@@ -43,7 +43,7 @@ else
         fv::gaussLaplacianScheme<vector, scalar>
         (
             mesh,
-            midPoint<scalar>(mesh),
+            reverseLinear<scalar>(mesh),        // Scheme is not used
             fv::uncorrectedSnGrad<vector>(mesh)
         ).fvmLaplacian(nuf, U)
     );

@@ -1,29 +1,13 @@
-// Set up source term for Poisson equation
+// Set up terms for Poisson equation
 volScalarField rAU(scheme.C()/UEqn.A());
 
 // Volumetric interpolation used, see references at top of RKSymFoam.C
-surfaceScalarField rAUf
-(
-    "rAUf",
-    scheme.C()
-  / reverseLinear<scalar>(mesh).interpolate(UEqn.A())
-);
+surfaceScalarField rAUf(reverseLinear<scalar>(mesh).interpolate(rAU));
 
-volVectorField HbyA("HbyA", U);
-
-HbyA = UEqn.H()/UEqn.A();
-
-UEqnSourceAH = UEqnSourceA.H();
-UEqnSourceBH = UEqnSourceB.H();
+volVectorField HbyA(constrainHbyA(UEqn.H()/UEqn.A(), U, p));
 
 // Volumetric interpolation used, see references at top of RKSymFoam.C
-surfaceScalarField phiHbyA
-(
-    "phiHbyA",
-    rAUf
-  / scheme.C()
-  * reverseLinear<vector>(mesh).dotInterpolate(mesh.Sf(), HbyA*UEqn.A())
-);
+surfaceScalarField phiHbyA(reverseLinear<vector>(mesh).dotInterpolate(mesh.Sf(), HbyA));
 
 constrainPressure(pCorr, U, phiHbyA, rAU);
 
@@ -33,7 +17,7 @@ fvScalarMatrix pCorrEqn
     fv::gaussLaplacianScheme<scalar, scalar>
     (
         mesh,
-        midPoint<scalar>(mesh),
+        reverseLinear<scalar>(mesh),        // Scheme is not used
         fv::uncorrectedSnGrad<scalar>(mesh)
     ).fvmLaplacian(rAUf, pCorr)
  ==

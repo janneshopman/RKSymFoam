@@ -95,6 +95,7 @@ volVectorField U
     mesh
 );
 
+// Volumetric interpolation used, see references at top of RKSymFoam.C
 surfaceScalarField phi
 (
     IOobject
@@ -105,7 +106,7 @@ surfaceScalarField phi
         IOobject::READ_IF_PRESENT,
         IOobject::AUTO_WRITE
     ),
-    midPoint<vector>(mesh).dotInterpolate(mesh.Sf(), U)
+    reverseLinear<vector>(mesh).dotInterpolate(mesh.Sf(), U)
 );
 
 autoPtr<RungeKuttaScheme> schemePtr

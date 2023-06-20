@@ -1,5 +1,3 @@
-scheme.stagePressure() = pCorr;
-
 if (!scheme.lastStage())
 {
     // Convection (UEqnSourceA) and diffusion (UEqnSourceB) are stored for later stages
@@ -16,8 +14,6 @@ if (!scheme.lastStage())
                 midPoint<vector>(mesh)
             ).fvmDiv(phi, U)
         );
-
-        UEqnSourceAH = UEqnSourceA.H();
     }
 
     if (scheme.explicitStageB())
@@ -31,13 +27,11 @@ if (!scheme.lastStage())
                 fv::uncorrectedSnGrad<vector>(mesh)
             ).fvmLaplacian(nuf, U)
         );
-
-        UEqnSourceBH = UEqnSourceB.H();
     }
 
     // Set stageSource of convection and diffusion
     // A and H functions account for possible implicit scheme
     // See also: https://openfoamwiki.net/index.php/OpenFOAM_guide/H_operator
-    scheme.stageSourceA() = - UEqnSourceAH + UEqnSourceA.A()*U;
-    scheme.stageSourceB() = - UEqnSourceBH + UEqnSourceB.A()*U;
+    scheme.stageSourceA() = - UEqnSourceA.H() + UEqnSourceA.A()*U;
+    scheme.stageSourceB() = - UEqnSourceB.H() + UEqnSourceB.A()*U;
 }

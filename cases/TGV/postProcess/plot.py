@@ -22,7 +22,8 @@ for case in cases:
             EKinInit = float(words[-1])/2    
 
     # Import run data
-    EKinData = np.loadtxt(runDir + '/' + case + '/postProcessing/kineticEnergy/0/volFieldValue.dat', skiprows = 4)/2
+    EKinData = np.loadtxt(runDir + '/' + case + '/postProcessing/kineticEnergy/0/volFieldValue.dat', skiprows = 4)
+    EKinData[:, 1] = EKinData[:, 1]/2
 
     EKinData = np.vstack(([0, EKinInit], EKinData))
 

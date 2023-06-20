@@ -111,9 +111,6 @@ int main(int argc, char *argv[])
             fvVectorMatrix UEqnSourceA(U, dimVolume*dimVelocity/dimTime);
             fvVectorMatrix UEqnSourceB(U, dimVolume*dimVelocity/dimTime);
 
-            volVectorField UEqnSourceAH(UEqnSourceA.H());
-            volVectorField UEqnSourceBH(UEqnSourceB.H());
-
             // Each stage has to solve for pressure unless the stage is both:
             // 1. Explicit, and
             // 2. The first stage of the scheme
