@@ -66,7 +66,7 @@ getting familiar with the structure of the code, to do so change the
 the files to omit the ".m4" extension. The case can now be run without the
 "run.sh" script, but simply as any other OpenFoam case.
 * The available Runge-Kutta schemes can be found in
-"libraries/RungeKuttaSchemes/", the Butcher Tableaus are given in the
+"libraries/RungeKuttaSchemes", the Butcher Tableaus are given in the
 <.C> file and a reference is given in the <.H> file
 
 ### Taylor-Green Vortex
@@ -85,7 +85,7 @@ Runge-Kutta 3)
 * LES cases: pimpleFoam (Backward Euler) and RKSymFoam (Backward Euler and
 Runge-Kutta 3)
 * Run cases on 8 processors with the same command by first adjusting the
-following lines in run.sh to:
+following lines in "run.sh" to:
 
 <pre>
 #- Run serial
