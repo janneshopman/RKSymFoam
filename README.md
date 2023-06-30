@@ -67,7 +67,7 @@ the files to omit the ".m4" extension. The case can now be run without the
 "run.sh" script, but simply as any other OpenFoam case.
 * The available Runge-Kutta schemes can be found in
 "libraries/RungeKuttaSchemes", the Butcher Tableaus are given in the
-<.C> file and a reference is given in the <.H> file
+"<\*.C>" file and a reference is given in the "<*.H>" file
 
 ### Taylor-Green Vortex
 
@@ -106,8 +106,8 @@ runApplication reconstructPar
 python plot.py
 </pre>
 
-* For example: To postprocess \<run_directory\>/\<case_1_name\> and 
-\<run_directory\>/\<case_2_name\>, edit the \<runDir\> and \<solvers\> 
+* For example: To postprocess "\<run_directory\>/\<case_1_name\>" and 
+"\<run_directory\>/\<case_2_name\>", edit the \<runDir\> and \<solvers\> 
 variables in "plot.py" to:
 
 <pre>
@@ -143,8 +143,8 @@ potentially for the turbulence model, all other schemes can be set to:
     default         none;
 </pre>
 
-* In "system/fvSolution", the subdictionaries for p and pFinal are named
-pCorr and pCorrFinal respectively.
+* In "system/fvSolution", the subdictionaries for "p" and "pFinal" are named
+"pCorr" and "pCorrFinal" respectively.
 * A subdictionary named "RungeKutta" has to be added to "system/fvSolution",
 for example:
 
