@@ -40,8 +40,8 @@ fi
 
 # Checking input arguments - Runge-Kutta scheme
 if [[ $RKSCHEMEREQUIRED == "true" ]]; then
-    if [[ $RKSCHEME != "BackwardEuler" && $RKSCHEME != "Kutta" && $RKSCHEME != "PS4p7q"]]; then
-        echo "Please enter Runge-Kutta scheme <BackwardEuler>, <Kutta> or <PS4p7q> as third argument"
+    if [[ $RKSCHEME != "BackwardEuler" && $RKSCHEME != "Kutta"]]; then
+        echo "Please enter Runge-Kutta scheme <BackwardEuler>, or <Kutta> as third argument"
         exit
     fi
 else
