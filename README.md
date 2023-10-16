@@ -17,8 +17,8 @@ developped by Edo Frederix, of the Nuclear Research and Consultancy Group
 (NRG), Westerduinweg 3, 1755 LE Petten, The Netherlands. The
 symmetry-preserving method was applied to this structure by Jannes Hopman,
 of the Heat and Mass Transfer Technological Center, Technical University
-of Catalonia, C/Colom 11, 08222 Terrassa, Spain. The pseudo=symplectic
-schemes were added by Josep Plana=Riu, of the Heat and Mass Transfer
+of Catalonia, C/Colom 11, 08222 Terrassa, Spain. The pseudo-symplectic
+schemes were added by Josep Plana-Riu, of the Heat and Mass Transfer
 Technological Center, Technical University of Catalonia.
 
 ## License
