@@ -7,7 +7,8 @@ R.W.C.P.  Verstappen. One notable adjustment is made in the pressure
 gradient interpolation to follow the paper "An energy-preserving
 unconditionally stable fractional step method on collocated grids." by D.
 Santos Serrano, F.X. Trias Miquel, G. Colomer Rey and C.D. Pérez Segarra.
-For a description of the method, please refer to these papers. 
+The pseudo-symplectic Runge-Kutta integrators included in this work are                                                          extracted from the paper "Explicit Runge-Kutta schemes for incompressible                                                        flow with improved energy-conservation properties." by F. Capuano, G.                                                            Coppola, L. Rández, and L. de Luca. For a description of the method, please                                                      refer to these papers. 
+ 
 
 ## Authors
 
@@ -16,7 +17,9 @@ developped by Edo Frederix, of the Nuclear Research and Consultancy Group
 (NRG), Westerduinweg 3, 1755 LE Petten, The Netherlands. The
 symmetry-preserving method was applied to this structure by Jannes Hopman,
 of the Heat and Mass Transfer Technological Center, Technical University
-of Catalonia, C/Colom 11, 08222 Terrassa, Spain. 
+of Catalonia, C/Colom 11, 08222 Terrassa, Spain. The pseudo=symplectic
+schemes were added by Josep Plana=Riu, of the Heat and Mass Transfer
+Technological Center, Technical University of Catalonia.
 
 ## License
 

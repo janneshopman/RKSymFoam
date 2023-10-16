@@ -26,4 +26,7 @@ Ascher222/Ascher222.C
 Ascher232/Ascher232.C
 Ascher233/Ascher233.C
 
+PS4p7q/PS4p7q.C
+PS3p5q/PS3p5q.C
+
 LIB = $(FOAM_USER_LIBBIN)/libRungeKuttaSchemes
