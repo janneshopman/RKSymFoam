@@ -16,7 +16,7 @@ FoamFile
 
 scale   1;
 
-TAU 6.23185307179586;
+TAU 6.28318530718;
 
 vertices
 (
