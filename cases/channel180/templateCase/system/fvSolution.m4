@@ -23,9 +23,9 @@ solvers
     "(p|pCorr)"
     {
         solver          GAMG;
+        smoother        GaussSeidel;
         tolerance       0;
         relTol          0.001;
-        smoother        GaussSeidel;
     }
 
     "(p|pCorr)Final"
@@ -36,7 +36,7 @@ solvers
         relTol          0;
     }
 
-    "U"
+    U
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
@@ -44,7 +44,7 @@ solvers
         relTol          0.1;
     }
 
-    "UFinal"
+    UFinal
     {
         $U;
         tolerance       1e-05;

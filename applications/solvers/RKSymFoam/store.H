@@ -18,15 +18,22 @@ if (!scheme.lastStage())
 
     if (scheme.explicitStageB())
     {
-        UEqnSourceB =
-        (
-            fv::gaussLaplacianScheme<vector, scalar>
+        if (noModelNewtonian)
+        {
+            UEqnSourceB =
             (
-                mesh,
-                midPoint<scalar>(mesh),
-                fv::uncorrectedSnGrad<vector>(mesh)
-            ).fvmLaplacian(nuf, U)
-        );
+                fv::gaussLaplacianScheme<vector, scalar>
+                (
+                    mesh,
+                    midPoint<scalar>(mesh),
+                    fv::uncorrectedSnGrad<vector>(mesh)
+                ).fvmLaplacian(nuf, U)
+            );
+        }
+        else
+        {
+            UEqnSourceB = -turbulence->divDevRhoReff(U);
+        }
     }
 
     // Set stageSource of convection and diffusion

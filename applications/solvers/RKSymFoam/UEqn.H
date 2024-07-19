@@ -38,15 +38,22 @@ else
         ).fvmDiv(phi, U)
     );
 
-    UEqnSourceB =
-    (
-        fv::gaussLaplacianScheme<vector, scalar>
+    if (noModelNewtonian)
+    {
+        UEqnSourceB =
         (
-            mesh,
-            reverseLinear<scalar>(mesh),        // Scheme is not used
-            fv::uncorrectedSnGrad<vector>(mesh)
-        ).fvmLaplacian(nuf, U)
-    );
+            fv::gaussLaplacianScheme<vector, scalar>
+            (
+                mesh,
+                reverseLinear<scalar>(mesh),        // Scheme is not used
+                fv::uncorrectedSnGrad<vector>(mesh)
+            ).fvmLaplacian(nuf, U)
+        );
+    }
+    else
+    {
+        UEqnSourceB = -turbulence->divDevRhoReff(U);
+    }
 
     tUEqn =
     (
