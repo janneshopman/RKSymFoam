@@ -25,7 +25,7 @@ if (!scheme.lastStage())
                 fv::gaussLaplacianScheme<vector, scalar>
                 (
                     mesh,
-                    midPoint<scalar>(mesh),
+                    reverseLinear<scalar>(mesh),
                     fv::uncorrectedSnGrad<vector>(mesh)
                 ).fvmLaplacian(nuf, U)
             );
