@@ -138,30 +138,3 @@ autoPtr<incompressible::turbulenceModel> turbulence
 (
     incompressible::turbulenceModel::New(U, phi, laminarTransport)
 );
-
-IOdictionary turbulenceProperties
-(
-    IOobject
-    (
-        "turbulenceProperties",
-        runTime.constant(),
-        mesh,
-        IOobject::MUST_READ_IF_MODIFIED,
-        IOobject::NO_WRITE
-    )
-);
-
-bool noModelNewtonian;
-
-if ((transportProperties.get<word>("transportModel") == "Newtonian") && (turbulenceProperties.get<word>("simulationType") == "laminar"))
-{
-    noModelNewtonian = true;
-}else
-{
-    noModelNewtonian = false;
-}
-
-if (!noModelNewtonian)
-{
-    Info<< "Using turbulence model, N.B. fvSchemes entry used for turbulence->divDevRhoReff(U)" << endl;
-}
