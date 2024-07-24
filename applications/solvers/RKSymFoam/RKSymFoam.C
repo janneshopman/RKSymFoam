@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
         // Turbulence model is required, to run DNS, set:
         // 1. <transportModel Newtonian;> in constant/transportProperties, and
         // 2. <simulationType laminar;> in constant/turbulenceProperties
-        nuf =  reverseLinear<scalar>(mesh).interpolate(turbulence->nuEff());
+        nuf = reverseLinear<scalar>(mesh).interpolate(turbulence->nuEff());
 
         pn = p.oldTime();
 
@@ -123,7 +123,7 @@ int main(int argc, char *argv[])
                     // Turbulence model is required, to run DNS, set:
                     // 1. <transportModel Newtonian;> in constant/transportProperties, and
                     // 2. <simulationType laminar;> in constant/turbulenceProperties
-                    nuf =  reverseLinear<scalar>(mesh).interpolate(turbulence->nuEff());
+                    nuf = reverseLinear<scalar>(mesh).interpolate(turbulence->nuEff());
 
                     #include "UEqn.H"
 
