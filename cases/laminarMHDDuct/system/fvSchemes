@@ -1,0 +1,51 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2012                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSchemes;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// N.B. RKSymFoam solvers do not read any schemes from this dictionary, except
+// potentially when a turbulence model is used
+
+ddtSchemes
+{
+    default                 Euler;
+}
+
+gradSchemes
+{
+    default                 Gauss linear;
+}
+
+divSchemes
+{
+    default                 Gauss midPoint;
+}
+
+laplacianSchemes
+{
+    default                 Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default                 linear;
+}
+
+snGradSchemes
+{
+    default                 corrected;
+}
+
+// ************************************************************************* //

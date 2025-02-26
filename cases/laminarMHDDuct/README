@@ -1,0 +1,76 @@
+Benchmark cases for MHD laminar duct flow
+
+Physics:
+U flows in x direction
+B field in y direction
+    y-normal walls -> Hartmann walls
+    z-normal walls -> side walls
+
+Boundary conditions:
+Periodic in x
+Walls in y and z
+U: no slip
+p: zero gradient
+electric potential:
+    fully conductive -> uniform zero
+    fully insulated  -> zero gradient
+    (1) Hunt's case: Conductive Hartmann walls (y-normal), insulated side walls (z-normal)
+    (2) Shercliff's case: All walls insulated
+The case can be run either by imposing a mass flow, or by setting a pressure gradient
+
+Non-dimensional quantities:
+Reynolds 1000 = (Ly/2)*U0/nu
+Hartmann 10   = (Ly/2)*By*sqrt(sigma/(rho*nu))
+
+Physical values used in example:
+Forcing U = 1 
+Lx = 1
+Ly = Lz = 2
+nu = 0.001
+sigma = 0.001
+rho = 1
+By = 10
+tEnd = 100 
+Forcing U can be replaced by a driving pressure gradient instead. 
+This pressure is calculated by anaSol/ductAna.py and explained below.
+To run the case with a pressure gradient, adjust constant/fvOptionsGradp and copy it to constant/fvOptions
+
+Discretisation used in example:
+Nx = 1
+Ny = Nz = 40
+dx = 1
+dyWall = dzWall = 0.0199006213
+dyBulk = dzBulk = 0.09950310655
+Ratio Bulk/Wall = 5
+Cell growth ratio in y and z: 1.08839840090822 (1.088^19 = ~5, 19 cell growths between wall and bulk, to get to the 5 ratio)
+dt = 0.1
+Temporal discretisations and Poisson solver parameters can all be found in system/{controlDict,fvSolutions}
+
+Analytical solution:
+An analytical solution exists for the Hunt and Shercliff cases, calculated by an iterative series.
+This equation is given in Eq. 26 of J.C.R. Hunt 1964 - MHD flow in rectangular ducts
+The equation is implemented in anaSol/analyticalSolutions.py
+It calculates the velocity profile and analytical pressure gradient, given:
+Ha (Hartmann number)
+dB (Hartmann wall conductivity, 0 for Shercliff's case, inf for Hunt's case (large number gives same result, e.g. 10E12))
+U0 (average velocity)
+a (Lz/2)
+b (Ly/2)
+y (discrete points along y)
+z (discrete points along z)
+nu (viscosity)
+rho (density)
+kMax (number of iterations)
+N.B. The solution is independent of Reynolds number
+
+Velocity profiles in z along y=0 (side wall profile) and in y along z=0 (Hartmann wall profile) are generated with anaSol/ductAna.py
+Set the required variables to calculate the profile and run (1000 iterations is more than enough)
+In the example a 1001x1001 uniform resolution is used in y and z
+The profiles are stored in U_y0.txt and U_z0.txt, and plotted in anaProfiles.pdf
+The profiles for the Hunt and Shercliff case at Ha=10 are stored in plotSolutions/reference
+
+Run and post-process the case with:
+./run.sh <case>
+where <case> is 'Hunt' or 'Shercliff'.
+A plot is generated with reference results in plotSolutions/results/UProfiles.pdf
+Example result plots for the Hunt and Shercliff case at Ha=10 are available in plotSolutions/results
