@@ -4,11 +4,32 @@ This code contains slightly adjusted versions of the solvers used in the
 paper "A symmetry-preserving second-order time-accurate PISO-based
 method." by E.M.J. Komen, J.A. Hopman, E.M.A. Frederix, F.X. Trias and
 R.W.C.P.  Verstappen. One notable adjustment is made in the pressure
-gradient interpolation to follow the paper "An energy-preserving
-unconditionally stable fractional step method on collocated grids." by D.
-Santos Serrano, F.X. Trias Miquel, G. Colomer Rey and C.D. Pérez Segarra.
-The pseudo-symplectic Runge-Kutta integrators included in this work are                                                          extracted from the paper "Explicit Runge-Kutta schemes for incompressible                                                        flow with improved energy-conservation properties." by F. Capuano, G.                                                            Coppola, L. Rández, and L. de Luca. For a description of the method, please                                                      refer to these papers. 
- 
+gradient interpolation to follow the paper "On a symmetry-preserving 
+unconditionally stable projection method on collocated unstructured grids 
+for incompressible flows" by D. Santos, J.A. Hopman, C.D. Pérez-Segarra, 
+F.X. Trias. The pseudo-symplectic Runge-Kutta integrators included in this
+work are extracted from the paper "Explicit Runge-Kutta schemes for 
+incompressible flow with improved energy-conservation properties." by 
+F. Capuano, G. Coppola, L. Rández, and L. de Luca. For a description of 
+the method, please refer to these papers. 
+
+## RKSymFoam with LES
+
+A separate branch RKSymLES is created for a version of RKSymFoam which 
+supports the usage of LES models. Models that are readily available in
+OpenFOAM are supported by this solver.
+
+## RKSymMagFoam
+
+An extension of RKSymFoam to handle magnetohydrodynamic flows at low 
+magnetic Reynolds numbers is added in applications/solvers/RKSymMagFoam.
+This solver also includes a method to measure the checkerboard effect and,
+if desirable, use this measurement to dynamically counter-act the problem.
+This method is described in "Quantifying the checkerboard problem to 
+reduce numerical dissipation" by J.A. Hopman, D. Santos, À. 
+Alsalti-Baldellou, J. Rigola and F.X. Trias. A tutorial case for laminar 
+magnetohydrodynamic duct flows are available in cases/laminarMHDDuct, 
+where a separate README is available with more info.
 
 ## Authors
 
