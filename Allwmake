@@ -6,3 +6,5 @@ wmake libso libraries/RungeKuttaSchemes
 wmake applications/utilities/setTaylorGreenFields
 
 wmake applications/solvers/RKSymFoam
+
+wmake applications/solvers/RKSymMagFoam
