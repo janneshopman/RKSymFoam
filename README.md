@@ -67,7 +67,7 @@ tested and currently not supported.
 * All test cases can be found in the "cases" directory, including a
 Taylor-Green Vortex and a channel flow.
 * Both test cases contain a "templateCase" directory, which should be
-copied before it run from inside the new directory with:
+copied before running it from inside the new directory with:
 
 <pre>
 ./run.sh &ltsolver&gt &ltsimulation type&gt &ltRunge-Kutta scheme&gt
